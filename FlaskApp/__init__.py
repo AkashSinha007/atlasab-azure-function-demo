@@ -32,9 +32,7 @@ def index():
 
 @app.route("/hello/<name>", methods=['GET'])
 def hello(name: str):
-    # return f"hello {name}"
-    html_content = "Hello World"
-    return render_template('index.html', content=html_content)
+    return f"hello {name}"
 
 @app.route("/module")
 def module():
@@ -42,7 +40,7 @@ def module():
 
 @app.route("/atlas")
 def atlas():
-    logging.info("Displaying Protein Interactions data")
+    logging.info("redirecting to atlas antibodies FAQ page")
     return redirect("https://www.atlasantibodies.com/knowledge-hub/faq-antibody-technologies/?language=en")
 
 if __name__ == "__main__":
