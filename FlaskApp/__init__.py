@@ -9,7 +9,8 @@ app = Flask(__name__)
 def index():
     return (
         "Try /hello/Chris for parameterized Flask route.\n"
-        "Try /module for module import guidance"
+        "Try /module for module import guidance.\n"
+        "Adding a new line for quick testing on azure deployment."
     )
 
 @app.route("/hello/<name>", methods=['GET'])
