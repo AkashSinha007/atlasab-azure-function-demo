@@ -1,13 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AtlasAB Example</title>
-</head>
-<body>
-    <div>
-        <h1>Displaying hello-world</h1>
-        <p>{{ content }}</p>
-    </div>
-</body>
-</html>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Entry Type</th>
+            <th>Primary Accession</th>
+            <th>Interaction Partner One (Accession)</th>
+            <th>Interaction Partner One (Gene Name)</th>
+            <th>Interaction Partner Two (Accession)</th>
+            <th>Interaction Partner Two (Gene Name)</th>
+            <th>Number of Experiments</th>
+            <th>Organism Differ</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in data['results'] %}
+            {% for comment in result['comments'] %}
+                {% for interaction in comment['interactions'] %}
+                    <tr>
+                        <td>{{ result['entryType'] }}</td>
+                        <td>{{ result['primaryAccession'] }}</td>
+                        <td>{{ interaction['interactantOne'].get('uniProtKBAccession', 'N/A') }}</td>
+                        <td>{{ interaction['interactantOne'].get('geneName', 'N/A') }}</td>
+                        <td>{{ interaction['interactantTwo'].get('uniProtKBAccession', 'N/A') }}</td>
+                        <td>{{ interaction['interactantTwo'].get('geneName', 'N/A') }}</td>
+                        <td>{{ interaction['numberOfExperiments'] }}</td>
+                        <td>{{ interaction['organismDiffer'] }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
