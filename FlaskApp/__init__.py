@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 # Always use relative import for custom module
 from .package.module import MODULE_VALUE
@@ -15,7 +15,9 @@ def index():
 
 @app.route("/hello/<name>", methods=['GET'])
 def hello(name: str):
-    return f"hello {name}"
+    # return f"hello {name}"
+    html_content = "Hello World"
+    return render_template('index.html', content=html_content)
 
 @app.route("/module")
 def module():
