@@ -8,8 +8,8 @@ from .package.module import MODULE_VALUE
 app = Flask(__name__)
 
 
-# Got url infor mation after following uniport from atlas antibodies website:
-# Link where atlas antibodies mentioned about UniProt :  
+# Got url infor mation after following uniport after reseraching about atlas antibodies website:
+# Link where protein atlas mentioned about UniProt :  https://www.proteinatlas.org/humanproteome/proteinevidence
 # Link to Uniprot where I got the below URL: https://www.uniprot.org/help/api_queries
 URL_TO_FETCH_PROTEIN_INTERACTIONS_FROM_UNIPROT = "https://rest.uniprot.org/uniprotkb/search?fields=accession%2Ccc_interaction&format=json&query=Insulin%20AND%20%28reviewed%3Atrue%29&size=10"
 
