@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template , redirect
 import requests
+import logging
 
 # Always use relative import for custom module
 from .package.module import MODULE_VALUE
@@ -19,6 +20,7 @@ def index():
     #     "Try /module for module import guidance.\n"
     #     "Adding a new line for quick testing on azure deployment."
     # )
+    logging.info("Displaying Protein Interactions data")
     try:
         response = requests.get(URL_TO_FETCH_PROTEIN_INTERACTIONS_FROM_UNIPROT)
         response.raise_for_status()
@@ -37,6 +39,11 @@ def hello(name: str):
 @app.route("/module")
 def module():
     return f"loaded from FlaskApp.package.module = {MODULE_VALUE}"
+
+@app.route("/atlas")
+def atlas():
+    logging.info("Displaying Protein Interactions data")
+    return redirect("https://www.atlasantibodies.com/knowledge-hub/faq-antibody-technologies/?language=en")
 
 if __name__ == "__main__":
     app.run()
